@@ -20,9 +20,8 @@ namespace Exam
 
             num1 = random.Next(100);
             num2 = random.Next(100);
-            int signNum = random.Next(3);
             char sign = '+';
-            switch (signNum)
+            switch (random.Next(3))
             {
                 case 0:
                     sign = '+';
@@ -74,6 +73,8 @@ namespace Exam
                     answerBtn.Visible = false;
                     answerLabel.Visible = false;
                     answerBox.Visible = false;
+                    progressLabel.Visible= false;
+                    timeLabel.Visible= false;
 
                     questionLabel.Text = "Game Over!";
                     judgeLabel.Text = "Your score: " + correct;
@@ -89,9 +90,8 @@ namespace Exam
 
                     num1 = random.Next(100);
                     num2 = random.Next(100);
-                    int signNum = random.Next(3);
                     char sign = '+';
-                    switch (signNum)
+                    switch (random.Next(3))
                     {
                         case 0:
                             sign = '+';

@@ -14,8 +14,9 @@ namespace AllPrimes
                 var num = int.Parse(textBox1.Text);
                 if (num <= 2)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentOutOfRangeException();
                 }
+
                 var primes = new List<int>();
                 for (int i = 2; i < num; i++)
                 {
@@ -33,6 +34,7 @@ namespace AllPrimes
                         primes.Add(i);
                     }
                 }
+
                 resLabel.Text = "Primes between:\n";
                 for (int i = 0; i < primes.Count; i++)
                 {
@@ -43,7 +45,7 @@ namespace AllPrimes
             {
                 resLabel.Text = "Must be an integer!";
             }
-            catch (ArgumentException)
+            catch (ArgumentOutOfRangeException)
             {
                 resLabel.Text = "Must be larger than 2!";
             }

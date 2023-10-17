@@ -1,0 +1,39 @@
+﻿<Window x:Class="FileBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileBrowser"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="820
+        " WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TreeView x:Name="fileTree"  Margin="0,25,520,0">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding ImageSource}" Width="30" Height="15"/>
+                        <TextBlock Text="{Binding FileName}"></TextBlock>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <EventSetter Event="Selected" Handler="FileTreeItem_Selected"></EventSetter>
+                    <EventSetter Event="MouseDoubleClick" Handler="FileTreeItem_MouseDoubleClick"></EventSetter>
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+        <ListView x:Name="fileList"  Margin="280,25,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="180" DisplayMemberBinding="{Binding FileName}" />
+                    <GridViewColumn Header="Last Access" Width="150" DisplayMemberBinding="{Binding LastAccess}" />
+                    <GridViewColumn Header="Type" Width="60" DisplayMemberBinding="{Binding Type}" />
+                    <GridViewColumn Header="Size" Width="100" DisplayMemberBinding="{Binding Size}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+
+</Window>

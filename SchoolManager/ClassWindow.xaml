@@ -1,0 +1,44 @@
+﻿<Window x:Class="SchoolManager.ClassWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchoolManager"
+        mc:Ignorable="d"
+        Title="Class" Height="450" Width="525"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView x:Name="studentList" Margin="0,0,0,85">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Student ID" Width="100" DisplayMemberBinding="{Binding Sid}"/>
+                    <GridViewColumn Header="Student Name" Width="200" DisplayMemberBinding="{Binding Sname}"/>
+                    <GridViewColumn Header="Edit" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="editBtn" Content="Rename" Click="editStudentBtn_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Delete" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="deleteBtn" Content="Delete" Click="deleteBtn_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="classInfoLabel" Width="400" Height="85" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Grid Width="125" Height="85" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Rename" Width="70" Height="35" VerticalAlignment="Top" Click="editClassBtn_Click"></Button>
+            <Button Content="Add Student" Width="85" Height="35" VerticalAlignment="Bottom" Click="addBtn_Click"></Button>
+        </Grid>
+    </Grid>
+</Window>

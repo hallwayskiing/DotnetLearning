@@ -14,13 +14,17 @@ namespace PhoneCrawler.crawler
     {
         private static HttpClient httpClient = new HttpClient();
 
+        static Crawler(){
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36");
+        }
+
         private static async Task<List<string>>GetLinks(string keyword)
         {
             string searchUrl = $"https://www.bing.com/search?q={Uri.EscapeDataString(keyword)}";
             string html = await httpClient.GetStringAsync(searchUrl);
 
             // 正则表达式匹配搜索结果中的网页链接
-            string linkPattern = @"<a href=""(http[^""]+)""";
+            string linkPattern = @"<a href=""([^""]+)""";
             MatchCollection matches = Regex.Matches(html, linkPattern);
 
             List<string> links = new List<string>();

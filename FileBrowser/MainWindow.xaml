@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="820
+        Title="Explorer" Height="350" Width="810
         " WindowStartupLocation="CenterScreen">
     <Grid>
-        <TreeView x:Name="fileTree"  Margin="0,25,520,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="301*"/>
+            <ColumnDefinition Width="332*"/>
+            <ColumnDefinition Width="187*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="fileTree"  Margin="0,25,1,0">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                     <StackPanel Orientation="Horizontal">
@@ -24,10 +29,10 @@
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>
-        <ListView x:Name="fileList"  Margin="280,25,0,0">
+        <ListView x:Name="fileList"  Margin="280,25,0,0" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="180" DisplayMemberBinding="{Binding FileName}" />
+                    <GridViewColumn Header="File Name" Width="180" DisplayMemberBinding="{Binding FileName}" />
                     <GridViewColumn Header="Last Access" Width="150" DisplayMemberBinding="{Binding LastAccess}" />
                     <GridViewColumn Header="Type" Width="60" DisplayMemberBinding="{Binding Type}" />
                     <GridViewColumn Header="Size" Width="100" DisplayMemberBinding="{Binding Size}"/>
